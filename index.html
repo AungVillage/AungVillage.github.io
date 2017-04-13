@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.js"></script>
+    <script src="jQuery-2.1.4.min.js"></script>
+</head>
+<body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 1000px;height:400px;"></div>
+    <script>
+      function fun(data){
+
+
+              //var dataj=JSON.parse(data.pro); //可以将json字符串转换成json对象
+              alert(data.pro);
+              var obj = eval(data.pro);
+              //alert(obj.name);
+              //$.each(obj,function(index,position){
+                  //alert(+position['name']);
+                          //html+="<option value='"+position['name']+"'>"+position["name"]+"</option>";
+              //});
+              for(var i=0;i<obj.length;i++){
+                   alert(obj[i].name);
+              }
+              alert(1);
+
+          }
+    </script>
+    <script type="text/javascript" src="chongqing.json"></script>
+</body>
+</html>
