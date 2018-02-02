@@ -6,7 +6,7 @@ var score_element = document.getElementById("score");
 var pass_element = document.getElementById("pass");
 var content_element = document.getElementById("content");
 var times; // 计算次数，3次后检测正误
-var a,b,c,d;
+var ini_a,ini_b,ini_c,ini_d;
 var errors = new Array();
 var e;
 
@@ -81,15 +81,19 @@ function calc(num_a,num_b,op){
   switch (op) {
     case '+':
       num_b.innerHTML=a+b;
+      card.innerHTML = "";
       break;
     case '-':
       num_b.innerHTML=a-b;
+      card.innerHTML = "";
       break;
     case '×':
       num_b.innerHTML=a*b;
+      card.innerHTML = "";
       break;
     case '÷':
       num_b.innerHTML=a/b;
+      card.innerHTML = "";
       break;
     default:
       return false;
@@ -105,7 +109,6 @@ function touchdrop(ev){
   var num_b = op.parentNode.getElementsByTagName('num')[0];
   op = op.innerHTML;
   if(calc(num_a,num_b,op)){
-    card.innerHTML = "";
     validate(num_b.innerHTML);
   }
 }
@@ -162,22 +165,22 @@ function setQuestion(){
   var num_c = document.getElementById("num_c");
   var num_b = document.getElementById("num_b");
   var num_d = document.getElementById("num_d");
-  num_a.innerHTML = a;
-  num_b.innerHTML = b;
-  num_c.innerHTML = c;
-  num_d.innerHTML = d;
+  num_a.innerHTML = ini_a;
+  num_b.innerHTML = ini_b;
+  num_c.innerHTML = ini_c;
+  num_d.innerHTML = ini_d;
 }
 
 function makeQuestion(){
   times = 0;
-  a = Math.ceil(Math.random()*13);
-  b = Math.ceil(Math.random()*13);
-  c = Math.ceil(Math.random()*13);
-  d = Math.ceil(Math.random()*13);
-  if(a==0){a=a+1;}
-  if(b==0){b=b+1;}
-  if(c==0){c=c+1;}
-  if(d==0){d=d+1;}
+  ini_a = Math.ceil(Math.random()*13);
+  ini_b = Math.ceil(Math.random()*13);
+  ini_c = Math.ceil(Math.random()*13);
+  ini_d = Math.ceil(Math.random()*13);
+  if(ini_a==0){ini_a=ini_a+1;}
+  if(ini_b==0){ini_b=ini_b+1;}
+  if(ini_c==0){ini_c=ini_c+1;}
+  if(ini_d==0){ini_d=ini_d+1;}
   setQuestion();
 }
 
@@ -201,4 +204,4 @@ function reset(){
   }
 }
 
-init();
+init();+
