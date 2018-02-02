@@ -1,4 +1,4 @@
-﻿var time_left;
+var time_left;
 var pass_left;
 var score;
 var time_element = document.getElementById("time");
@@ -81,19 +81,19 @@ function calc(num_a,num_b,op){
   switch (op) {
     case '+':
       num_b.innerHTML=a+b;
-      card.innerHTML = "";
+      num_a.parentNode.innerHTML="";
       break;
     case '-':
       num_b.innerHTML=a-b;
-      card.innerHTML = "";
+      num_a.parentNode.innerHTML="";
       break;
     case '×':
       num_b.innerHTML=a*b;
-      card.innerHTML = "";
+      num_a.parentNode.innerHTML="";
       break;
     case '÷':
       num_b.innerHTML=a/b;
-      card.innerHTML = "";
+      num_a.parentNode.innerHTML="";
       break;
     default:
       return false;
@@ -122,7 +122,6 @@ function drop(ev)
   var num_b = ev.target.parentNode.getElementsByTagName('num')[0];
   var op = ev.target.innerHTML;
   if(calc(num_a,num_b,op)){
-    card.innerHTML = "";
     validate(num_b.innerHTML);
   }
 }
