@@ -1,4 +1,4 @@
-var time_left;
+﻿var time_left;
 var pass_left;
 var score;
 var time_element = document.getElementById("time");
@@ -204,4 +204,4 @@ function reset(){
   }
 }
 
-init();+
+init();
