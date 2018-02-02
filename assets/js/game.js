@@ -73,7 +73,8 @@ function validate(num){
 }
 
 function calc(num_a,num_b,op){
-  if(num_a.parentNode==num_b.parentNode) return false;
+  if(num_a.parentNode==num_b.parentNode)
+    return false;
   var a = parseFloat(num_a.innerHTML);
   var b = parseFloat(num_b.innerHTML);
   console.log(a,op,b);
@@ -91,6 +92,7 @@ function calc(num_a,num_b,op){
       num_b.innerHTML=a/b;
       break;
     default:
+      return false;
   }
   return true;
 }
