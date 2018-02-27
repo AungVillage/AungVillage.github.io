@@ -30,12 +30,18 @@
   </div>
   <!-- /时间和分数 -->
   <!-- 内容 -->
-  <div id="content" style="position:fixed;width:100%;height:80%;bottom:10%;"  ontouchstart="allowDrop(event)" ontouchmove="allowDrop(event)">
+  <div id="content" style="position:fixed;width:100%;height:80%;bottom:10%;" ontouchstart="allowDrop(event)" ontouchmove="allowDrop(event)">
 
   </div>
   <!-- /内容 -->
-  <!-- 重置/过 -->
+  <!-- 功能键 -->
   <div style="position:fixed;width:100%;height:10%;bottom:5%;">
+    <div style="position:absolute;width:20%;height:60%;left:5%;bottom:10%;" onclick="newGame()">
+      新游戏
+    </div>
+    <div style="position:absolute;width:20%;height:60%;left:25%;bottom:10%;" onclick="error_mode()">
+      错题集
+    </div>
     <div style="position:absolute;width:10%;height:60%;right:25%;bottom:10%;">
       <img src="assets/img/reset.png" width="100%" height="100%" onclick="reset()"/>
     </div>
@@ -44,7 +50,7 @@
       <span id="pass" style="color:#FFF;position:absolute;top:30%;left:60%">?</span>
     </div>
   </div>
-  <!-- /过 -->
+  <!-- /功能键 -->
 
 </body>
 <script src="assets/js/game.js"></script>
