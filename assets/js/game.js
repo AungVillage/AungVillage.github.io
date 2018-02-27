@@ -120,7 +120,7 @@ function fnDown(ev)
   var tmp_top = oDiv.offsetHeight/3.5;
   oDiv.style.width=10+'%';
   oDiv.style.height=10+'%';
-
+  oDiv.style.zIndex=-1;
   oDiv.style.left=oEvent.changedTouches[0].clientX-0.5*oDiv.offsetWidth+'px';
   oDiv.style.top=oEvent.changedTouches[0].clientY-0.5*oDiv.offsetHeight-tmp_top+'px';
 
@@ -173,6 +173,7 @@ function fnUp(ev)
     oDiv.style.top = oDivY+'px';
     oDiv.style.width=35+'%';
     oDiv.style.height=35+'%';
+    oDiv.style.zIndex=0;
     oDiv.getElementsByTagName("img")[0].src="assets/img/game_card.png";
 
     var card = oDiv;
