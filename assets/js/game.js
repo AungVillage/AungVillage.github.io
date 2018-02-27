@@ -15,6 +15,7 @@ var disX=0; //拖拽偏移
 var disY=0;
 var oDivX=0;//拖拽前位置
 var oDivY=0;
+var selected_card=null;
 
 var content = "";
     content += "<div id=\"card_a\" style=\"position:absolute;width:35%;height:35%;top:10%;left:10%;\" ondragover=\"allowDrop(event)\">\n";
@@ -67,14 +68,13 @@ function validate(num){
     if(num=="24"){
       score+=10;
       score_element.innerHTML=score;
-      console.log("正确！",score);
+      content_element.innerHTML = '<div style="color:red; font-size:48px; text-align:center; vertical-align:middle;">回答正确！<br> 得10分！</div>';
     } else if(game_mode!=2){
       var temp = new Array(ini_a,ini_b,ini_c,ini_d);
       errors.push(temp);
-      console.log("错误！",errors);
+      content_element.innerHTML = '<div style="color:red; font-size:48px; text-align:center; vertical-align:middle;">错误！<br>请继续努力！</div>';
     }
-    content_element.innerHTML = content;
-    makeQuestion();
+    setTimeout("makeQuestion()",1000);
   }
 }
 
@@ -113,11 +113,19 @@ function fnDown(ev)
   ev.preventDefault();
   var oEvent=ev||event;
   oDiv = ev.target.parentNode;
-  disX=oEvent.changedTouches[0].clientX-oDiv.offsetLeft;
-  disY=oEvent.changedTouches[0].clientY-oDiv.offsetTop;
+
   oDivX = oDiv.offsetLeft;
   oDivY = oDiv.offsetTop;
-  console.log(oDiv.offsetHeight);
+
+  var tmp_top = oDiv.offsetHeight/3.5;
+  oDiv.style.width=10+'%';
+  oDiv.style.height=10+'%';
+
+  oDiv.style.left=oEvent.changedTouches[0].clientX-0.5*oDiv.offsetWidth+'px';
+  oDiv.style.top=oEvent.changedTouches[0].clientY-0.5*oDiv.offsetHeight-tmp_top+'px';
+
+  disX=oEvent.changedTouches[0].clientX-oDiv.offsetLeft;
+  disY=oEvent.changedTouches[0].clientY-oDiv.offsetTop;
 
   document.ontouchmove=fnMove;
   document.ontouchend=fnUp;
@@ -129,6 +137,31 @@ function fnMove(ev)
     var oEvent=ev||event;
     oDiv.style.left=oEvent.changedTouches[0].clientX-disX+'px';
     oDiv.style.top=oEvent.changedTouches[0].clientY-disY+'px';
+
+    var card2 = document.elementFromPoint(ev.changedTouches[0].clientX, ev.changedTouches[0].clientY).parentNode;
+
+    if(selected_card!=null){
+      selected_card.src="assets/img/game_card.png";
+    }
+    if(card2.id.match("card")==null) {
+      return;
+    }
+    else {
+      var upX = ev.changedTouches[0].clientX;
+      var upY = ev.changedTouches[0].clientY;
+      var realtop = card2.offsetHeight/3.5 + card2.offsetTop;
+      selected_card = card2.getElementsByTagName("img")[0];
+
+      if(upX<card2.offsetLeft+0.3*card2.offsetWidth && upY<realtop+0.3*card2.offsetHeight){
+        selected_card.src="assets/img/game_card_selected.png";
+      } else if(upX>card2.offsetLeft+0.7*card2.offsetWidth && upY<realtop+0.3*card2.offsetHeight){
+        selected_card.src="assets/img/game_card_selected.png";
+      } else if(upX<card2.offsetLeft+0.3*card2.offsetWidth && upY>realtop+0.7*card2.offsetHeight){
+        selected_card.src="assets/img/game_card_selected.png";
+      } else if(upX>card2.offsetLeft+0.7*card2.offsetWidth && upY>realtop+0.7*card2.offsetHeight){
+        selected_card.src="assets/img/game_card_selected.png";
+      }
+    }
 }
 
 function fnUp(ev)
@@ -138,9 +171,14 @@ function fnUp(ev)
     document.ontouchend=null;
     oDiv.style.left = oDivX+'px';
     oDiv.style.top = oDivY+'px';
+    oDiv.style.width=35+'%';
+    oDiv.style.height=35+'%';
+    oDiv.getElementsByTagName("img")[0].src="assets/img/game_card.png";
 
     var card = oDiv;
     var card2 = document.elementFromPoint(ev.changedTouches[0].clientX, ev.changedTouches[0].clientY).parentNode;
+
+    if(card2.id.match("card")==null) return;
     var num_a = card.getElementsByTagName('num')[0];
     var num_b = card2.getElementsByTagName('num')[0];
 
@@ -148,13 +186,13 @@ function fnUp(ev)
     var upY = ev.changedTouches[0].clientY;
     var op = 0;
     var realtop = card2.offsetHeight/3.5 + card2.offsetTop;
-    if(upX<card2.offsetLeft+0.5*card2.offsetWidth && upY<realtop+0.5*card2.offsetHeight){
+    if(upX<card2.offsetLeft+0.3*card2.offsetWidth && upY<realtop+0.3*card2.offsetHeight){
       op = '+';
-    } else if(upX>card2.offsetLeft+0.5*card2.offsetWidth && upY<realtop+0.5*card2.offsetHeight){
+    } else if(upX>card2.offsetLeft+0.7*card2.offsetWidth && upY<realtop+0.3*card2.offsetHeight){
       op = '-';
-    } else if(upX<card2.offsetLeft+0.5*card2.offsetWidth && upY>realtop+0.5*card2.offsetHeight){
+    } else if(upX<card2.offsetLeft+0.3*card2.offsetWidth && upY>realtop+0.7*card2.offsetHeight){
       op = '×';
-    } else if(upX>card2.offsetLeft+0.5*card2.offsetWidth && upY>realtop+0.5*card2.offsetHeight){
+    } else if(upX>card2.offsetLeft+0.7*card2.offsetWidth && upY>realtop+0.7*card2.offsetHeight){
       op = '÷';
     }
     if(calc(num_a,num_b,op)){
@@ -195,7 +233,6 @@ function init(){
   time_element.innerHTML = time_left;
   score_element.innerHTML = score;
   pass_element.innerHTML = pass_left;
-  content_element.innerHTML = content;
 
   // document.getElementById('a').addEventListener("touchstart",drag,false);
   // document.getElementById('b').addEventListener("touchstart",drag,false);
