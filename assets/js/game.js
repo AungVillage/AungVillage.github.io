@@ -195,6 +195,9 @@ function fnUp(ev)
     } else if(upX>card2.offsetLeft+0.7*card2.offsetWidth && upY>realtop+0.7*card2.offsetHeight){
       op = '÷';
     }
+    if(selected_card!=null){
+      selected_card.src="assets/img/game_card.png";
+    }
     if(calc(num_a,num_b,op)){
       validate(num_b.innerHTML);
     }
