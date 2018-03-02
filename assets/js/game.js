@@ -19,37 +19,39 @@ var selected_card=null;
 
 var content = "";
     content += "<div id=\"card_a\" style=\"position:absolute;width:35%;height:35%;top:10%;left:10%;\" ondragover=\"allowDrop(event)\">\n";
-    content += "    <img id=\"a\" src=\"assets/img/game_card.png\" width=\"100%\" height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
+    content += "    <img id=\"a\" style=\"clear: both; display: block; margin:auto; \" src=\"assets/img/game_card.png\" height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
     content += "    <num id=\"num_a\" style=\"position:absolute;top:5%;left:49%; color:red; font-size:32px;\">5<\/num>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:0\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:0\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:0\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:0\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
     content += "<\/div>\n";
     content += "<div id=\"card_b\" style=\"position:absolute;width:35%;height:35%;top:10%;right:10%;\" ondragover=\"allowDrop(event)\">\n";
-    content += "  <img id=\"b\" src=\"assets/img/game_card.png\" width=\"100%\" height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
+    content += "  <img id=\"b\" style=\"clear: both; display: block; margin:auto; \" src=\"assets/img/game_card.png\" height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
     content += "  <num id=\"num_b\" style=\"position:absolute;top:5%;left:49%; color:red; font-size:32px;\">5<\/num>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:0\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:0\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:0\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:0\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
     content += "<\/div>\n";
     content += "<div id=\"card_c\" style=\"position:absolute;width:35%;height:35%;bottom:10%;left:10%;\" ondragover=\"allowDrop(event)\">\n";
-    content += "  <img id=\"c\" src=\"assets/img/game_card.png\" width=\"100%\" height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
+    content += "  <img id=\"c\" style=\"clear: both; display: block; margin:auto; \" src=\"assets/img/game_card.png\"  height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
     content += "  <num id=\"num_c\" style=\"position:absolute;top:5%;left:49%; color:red; font-size:32px;\">5<\/num>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:0\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:0\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:0\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:0\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
     content += "<\/div>\n";
     content += "<div id=\"card_d\" style=\"position:absolute;width:35%;height:35%;bottom:10%;right:10%;\" ondragover=\"allowDrop(event)\">\n";
-    content += "  <img id=\"d\" src=\"assets/img/game_card.png\" width=\"100%\" height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
+    content += "  <img id=\"d\" style=\"clear: both; display: block; margin:auto; \" src=\"assets/img/game_card.png\"  height=\"100%\" draggable=\"true\" ondragstart=\"drag(event)\" ontouchstart=\"fnDown(event)\"/>\n";
     content += "  <num id=\"num_d\" style=\"position:absolute;top:5%;left:49%; color:red; font-size:32px;\">5<\/num>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
-    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:-10%\" width=\"30%\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;left:0\" height=\"20%\" src=\"assets/img/add.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;top:-10%;right:0\" height=\"20%\" src=\"assets/img/sub.png\" ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;left:0\" height=\"20%\" src=\"assets/img/mul.png\"ondrop=\"drop(event)\"/>\n";
+    content += "    <img class=\"symbol\" hidden style=\"position:absolute;bottom:-10%;right:0\" height=\"20%\" src=\"assets/img/div.png\" ondrop=\"drop(event)\"/>\n";
     content += "<\/div>\n";
+var errors_content="";
+
 
 function allowDrop(ev)
 {
@@ -72,6 +74,7 @@ function validate(num){
     } else if(game_mode!=2){
       var temp = new Array(ini_a,ini_b,ini_c,ini_d);
       errors.push(temp);
+      errors_save();
       content_element.innerHTML = '<div style="color:red; font-size:48px; text-align:center; vertical-align:middle;">错误！<br>请继续努力！</div>';
     }
     setTimeout("makeQuestion()",1000);
@@ -348,3 +351,32 @@ function error_mode(){
   game_mode=2;
   init();
 }
+
+function show_errors(){
+  //console.log(JSON.stringify(errors));
+  errors_content = "<div style=\"position:absolute; color:red; font-size:32px; text-align:center; overflow:auto; width:80%; height:80%; left:10%;\">";
+  errors_content += "<ol>";
+  for(var i=0;i<errors.length;i++){
+    errors_content += "<li>" + (JSON.stringify(errors[i])) +"<div align=\"right\" onclick=\"del_error("+ i +")\">删除</div></li>" ;
+  }
+  errors_content += "</ol></div>";
+  content_element.innerHTML = errors_content;
+}
+
+function del_error(index){
+  //console.log(index);
+  errors.splice(index,1);
+  errors_save();
+  show_errors();
+}
+
+function errors_save(){
+  localStorage.setItem('errors', JSON.stringify(errors));
+}
+
+function errors_load(){
+  var temp = JSON.parse(localStorage.getItem('errors'));
+  if(temp!=null) errors=temp;
+}
+
+errors_load();
